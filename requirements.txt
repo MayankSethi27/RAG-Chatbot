@@ -3,7 +3,9 @@ python-dotenv
 langchain-community
 streamlit
 langchain-groq
-chromadb==0.4.13
-numpy>=1.24,<1.26
+chromadb>=0.4.15
+numpy>=1.26.0
 sentence-transformers
 pypdf
+setuptools>=68.0.0  # Needed for Python 3.13 compatibility
+wheel  # Required for building packages in Python 3.13
