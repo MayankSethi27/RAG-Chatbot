@@ -6,11 +6,17 @@ load_dotenv()
 import streamlit as st
 
 # Set environment variables from Streamlit secrets
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+#os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+#os.environ["LANGCHAIN_TRACING_V2"] = "true"
+#os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
+#os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
+#groq_api_key = os.getenv("GROQ_API_KEY")
+
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
-os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
-groq_api_key = os.getenv("GROQ_API_KEY")
+os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
+os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
+groq_api_key = st.secrets["GROQ_API_KEY"]
 
 
 # Setup Streamlit app
