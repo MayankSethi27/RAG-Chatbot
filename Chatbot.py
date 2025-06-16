@@ -18,6 +18,7 @@ os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
 
+os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"  # Disable telemetry
 
 # Setup Streamlit app
 st.title("Conversational RAG With PDF With Chat History")
@@ -82,7 +83,7 @@ if upload_file:
     from langchain_core import retrievers
     retriever=vectorstore.as_retriever()
     
-    
+
     #Create History Prompt (NO CONTEXT)-->used to reframe the ques. for the reteriever with help of chat_history
     from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
     history_prompt=ChatPromptTemplate.from_messages([
