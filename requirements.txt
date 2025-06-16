@@ -3,7 +3,7 @@ python-dotenv
 langchain-community
 streamlit
 langchain-groq
-chromadb==0.4.20
-numpy==1.23.5
+chromadb==0.4.13
+numpy>=1.24,<1.26
 sentence-transformers
 pypdf
