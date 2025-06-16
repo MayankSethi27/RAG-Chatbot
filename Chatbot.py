@@ -1,22 +1,19 @@
 import os
 
+
+
 from dotenv import load_dotenv
 load_dotenv()
 
 import streamlit as st
 
 # Set environment variables from Streamlit secrets
-#os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-#os.environ["LANGCHAIN_TRACING_V2"] = "true"
-#os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
-#os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
-#groq_api_key = os.getenv("GROQ_API_KEY")
-
-os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
-os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
-groq_api_key = st.secrets["GROQ_API_KEY"]
+os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
+os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
+groq_api_key = os.getenv("GROQ_API_KEY")
+
 
 
 # Setup Streamlit app
@@ -65,16 +62,13 @@ if upload_file:
     docs_split=text_split.split_documents(docs)
 
     # TEXT->VECTORS
-    from langchain_huggingface import HuggingFaceEmbeddings
+    from langchain_community.embeddings import HuggingFaceEmbeddings
     # Create embedding model
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
 
     # Store to VectorDB
-    #from langchain.vectorstores import Chroma
-    #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
-    # Vector Store (FAISS)
-    from langchain_community.vectorstores import FAISS
-    vectorstore = FAISS.from_documents(docs_split, embeddings)
+    from langchain.vectorstores import Chroma
+    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
 
 
     # Create Retriever
