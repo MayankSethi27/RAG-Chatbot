@@ -71,11 +71,17 @@ if upload_file:
 
     # Store to VectorDB
     from langchain.vectorstores import Chroma
-    vectorstore=Chroma.from_documents(documents=docs_split,embedding=embeddings)
+    import chromadb
+    # Disable telemetry to prevent protobuf-related crash
+    chromadb.config.settings.CHROMA_TELEMETRY_ENABLED = False
+    # Now safely use Chroma
+    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+
 
     # Create Retriever
     from langchain_core import retrievers
     retriever=vectorstore.as_retriever()
+    
     
     #Create History Prompt (NO CONTEXT)-->used to reframe the ques. for the reteriever with help of chat_history
     from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
