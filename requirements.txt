@@ -7,4 +7,5 @@ chromadb
 faiss-cpu
 sentence-transformers
 pypdf
-
+huggingface-hub
+torch  # required by sentence-transformers
