@@ -18,7 +18,6 @@ os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
 
-os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"  # Disable telemetry
 
 # Setup Streamlit app
 st.title("Conversational RAG With PDF With Chat History")
@@ -71,12 +70,11 @@ if upload_file:
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
 
     # Store to VectorDB
-    from langchain.vectorstores import Chroma
-    import chromadb
-    # Disable telemetry to prevent protobuf-related crash
-    chromadb.config.settings.CHROMA_TELEMETRY_ENABLED = False
-    # Now safely use Chroma
-    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    #from langchain.vectorstores import Chroma
+    #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    # Vector Store (FAISS)
+    from langchain.vectorstores import FAISS
+    vectorstore = FAISS.from_documents(docs_split, embeddings)
 
 
     # Create Retriever
