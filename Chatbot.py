@@ -5,12 +5,6 @@ load_dotenv()
 
 import streamlit as st
 
-from huggingface_hub import snapshot_download
-
-# Downloads model if not already cached
-snapshot_download(repo_id="sentence-transformers/all-MiniLM-L6-v2")
-
-
 # Set environment variables from Streamlit secrets
 #os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 #os.environ["LANGCHAIN_TRACING_V2"] = "true"
@@ -23,7 +17,6 @@ os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
-os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
 
 # Setup Streamlit app
@@ -72,7 +65,7 @@ if upload_file:
     docs_split=text_split.split_documents(docs)
 
     # TEXT->VECTORS
-    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_huggingface import HuggingFaceEmbeddings
     # Create embedding model
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
 
