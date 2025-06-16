@@ -17,6 +17,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
 
 # Setup Streamlit app
