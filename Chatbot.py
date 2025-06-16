@@ -5,6 +5,12 @@ load_dotenv()
 
 import streamlit as st
 
+from huggingface_hub import snapshot_download
+
+# Downloads model if not already cached
+snapshot_download(repo_id="sentence-transformers/all-MiniLM-L6-v2")
+
+
 # Set environment variables from Streamlit secrets
 #os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 #os.environ["LANGCHAIN_TRACING_V2"] = "true"
