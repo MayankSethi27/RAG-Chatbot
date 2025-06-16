@@ -55,7 +55,7 @@ if upload_file:
      tmp_file_path = tmp_file.name
 
    #then Load the Uploaded file
-    from langchain.document_loaders import PyPDFLoader
+    from langchain_community.document_loaders import PyPDFLoader
     loader = PyPDFLoader(tmp_file_path)
     docs = loader.load()
     
@@ -65,7 +65,7 @@ if upload_file:
     docs_split=text_split.split_documents(docs)
 
     # TEXT->VECTORS
-    from langchain.embeddings import HuggingFaceEmbeddings
+    from langchain_community.embeddings import HuggingFaceEmbeddings
     # Create embedding model
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
 
@@ -73,7 +73,7 @@ if upload_file:
     #from langchain.vectorstores import Chroma
     #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
     # Vector Store (FAISS)
-    from langchain.vectorstores import FAISS
+    from langchain_community.vectorstores import FAISS
     vectorstore = FAISS.from_documents(docs_split, embeddings)
 
 
