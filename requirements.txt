@@ -1,11 +1,12 @@
 langchain
 python-dotenv
 langchain-community
-streamlit
+streamlit==1.34.0
 langchain-groq
 chromadb
 faiss-cpu
 sentence-transformers
 pypdf
 langchain-huggingface
-torch
+torch==2.1.0
+
