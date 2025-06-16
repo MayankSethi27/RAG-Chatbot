@@ -3,12 +3,7 @@ python-dotenv
 langchain-community
 streamlit
 langchain-groq
-chromadb>=0.4.15
-numpy>=1.26.0
+chromadb
+faiss-cpu
 sentence-transformers
 pypdf
-setuptools>=68.0.0  # Needed for Python 3.13 compatibility
-wheel  # Required for building packages in Python 3.13
-protobuf==3.20.3  # Force a known-working version
-opentelemetry-api==1.22.0  # Explicitly pin to avoid issues
-opentelemetry-sdk==1.22.0
