@@ -3,6 +3,6 @@ python-dotenv
 langchain-community
 streamlit
 langchain-groq
-chromadb
+chromadb==0.4.20
 sentence-transformers
 pypdf
