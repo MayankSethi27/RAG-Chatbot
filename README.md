@@ -3,7 +3,11 @@
 This project is a Conversational Retrieval-Augmented Generation (RAG) Chatbot built with **LangChain**, **Streamlit**, and **Groq LLM**. It allows users to upload a PDF file, ask questions, and receive answers using the document content — while maintaining session-based chat history.
 
 ---
+##  Live App
 
+ [Click here to try the RAG-Chatbot](https://rag-chatbot-mayank.streamlit.app/)
+
+---
 ##  Features
 
 -  Upload any PDF and extract its contents
@@ -67,3 +71,6 @@ RAG-Chatbot/
 ├── .devcontainer/           # Optional devcontainer configs
 └── README.md
 ```
+---
+## Author
+Mayank Sethi
