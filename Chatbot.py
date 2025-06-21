@@ -67,8 +67,10 @@ if upload_file:
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
 
     # Store to VectorDB
-    from langchain.vectorstores import Chroma
-    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    #from langchain.vectorstores import Chroma
+    #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    from langchain_community.vectorstores import FAISS
+    vectorstore = FAISS.from_documents(docs_split, embeddings)
 
 
     # Create Retriever
