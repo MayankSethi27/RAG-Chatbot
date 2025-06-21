@@ -8,3 +8,4 @@ pypdf
 chromadb
 torch
 langchain-groq
+protobuf==4.23.4
