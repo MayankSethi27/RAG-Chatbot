@@ -66,10 +66,10 @@ if upload_file:
     embeddings = OpenAIEmbeddings()
 
     # Store to VectorDB
-    from langchain.vectorstores import Chroma
-    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
-    #from langchain_community.vectorstores import FAISS
-    #vectorstore = FAISS.from_documents(docs_split, embeddings)
+    #from langchain.vectorstores import Chroma
+    #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    from langchain_community.vectorstores import FAISS
+    vectorstore = FAISS.from_documents(docs_split, embeddings)
 
 
     # Create Retriever
