@@ -62,15 +62,14 @@ if upload_file:
     docs_split=text_split.split_documents(docs)
 
     # TEXT->VECTORS
-    from langchain_community.embeddings import HuggingFaceEmbeddings
-    # Create embedding model
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",model_kwargs={'device': 'cpu'},encode_kwargs={"normalize_embeddings": True})  # Force it to CPU)  # or any other supported model
+    from langchain.embeddings import OpenAIEmbeddings
+    embeddings = OpenAIEmbeddings()
 
     # Store to VectorDB
-    #from langchain.vectorstores import Chroma
-    #vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
-    from langchain_community.vectorstores import FAISS
-    vectorstore = FAISS.from_documents(docs_split, embeddings)
+    from langchain.vectorstores import Chroma
+    vectorstore = Chroma.from_documents(documents=docs_split, embedding=embeddings)
+    #from langchain_community.vectorstores import FAISS
+    #vectorstore = FAISS.from_documents(docs_split, embeddings)
 
 
     # Create Retriever
