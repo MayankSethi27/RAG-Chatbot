@@ -93,15 +93,15 @@ if upload_file:
         ("human","Answer the following question using the provided context:\n\n<context>\n{context}\n</context>\n\nQuestion: {input}")
     ])
     # Create history_aware_retriever (reframe the user ques. with given chat_history with help of llm)
-    from langchain.chains import create_history_aware_retriever
+    from langchain.chains.history_aware_retriever import create_history_aware_retriever
     history_retiever=create_history_aware_retriever(llm,retriever,history_prompt)
 
     # Create Document Chain
-    from langchain.chains import create_stuff_documents_chain
+    from langchain.chains.combine_documents import create_stuff_documents_chain
     document_chain=create_stuff_documents_chain(llm,prompt)
 
     # Create Retiever Chain( connect retriever with -->prompt-->llm)
-    from langchain.chains import create_retrieval_chain
+    from langchain.chains.retrieval import create_retrieval_chain
     retriever_chain=create_retrieval_chain(history_retiever,document_chain)
 
     # ✅ Session-aware history manager
