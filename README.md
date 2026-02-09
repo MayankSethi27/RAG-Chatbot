@@ -13,17 +13,17 @@ This project is a Conversational Retrieval-Augmented Generation (RAG) Chatbot bu
 -  Upload any PDF and extract its contents
 -  Ask context-aware questions from the document
 -  Maintains session-based chat history
--  Uses HuggingFace embeddings + ChromaDB 
--  Powered by Groq's Gemma-2 LLM via LangChain
+-  Uses HuggingFace embeddings + FAISS vector store
+-  Powered by Groq's Llama 3.3 LLM via LangChain
 
 ---
 
 ##  Tech Stack
 
 - **Frontend**: Streamlit
-- **LLM**: Groq (Gemma-2)
-- **Embeddings**: sentence-transformers (`all-MiniLM-L6-v2`)
-- **Vector Store**: Chroma with FAISS
+- **LLM**: Groq (Llama 3.3 70B)
+- **Embeddings**: HuggingFace (`all-MiniLM-L6-v2`)
+- **Vector Store**: FAISS
 - **LangChain Modules**: RAG chain, History-aware retriever, Document loaders
 
 ---
