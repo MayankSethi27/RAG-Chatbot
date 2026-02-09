@@ -22,7 +22,7 @@ st.write("Upload PDF And Ask Questions")
 
 # Import the Groq API
 from langchain_groq import ChatGroq
-llm= ChatGroq(groq_api_key=groq_api_key,model="gemma2-9b-it")
+llm= ChatGroq(groq_api_key=groq_api_key,model="llama-3.3-70b-versatile")
 
 
 # Input session_id (which session from user) -->string form(eg- "user123")
