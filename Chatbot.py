@@ -62,8 +62,8 @@ if upload_file:
     docs_split=text_split.split_documents(docs)
 
     # TEXT->VECTORS
-    from langchain.embeddings import OpenAIEmbeddings
-    embeddings = OpenAIEmbeddings()
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     # Store to VectorDB
     #from langchain.vectorstores import Chroma
